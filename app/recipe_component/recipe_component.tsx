@@ -2,12 +2,14 @@
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { Button, Card } from "react-bootstrap";
+import './recipe_component.css'
 
 export function Recipe({id = "0", header = "Untitled Recipe"}) {
     const router = useRouter();
     
     
     return (
+        //style={{ width: '18rem' }}
         <Card style={{ width: '18rem' }}>
             <Card.Body>
                 <Card.Title>{header}</Card.Title>
