@@ -1,9 +1,10 @@
 'use client'
 import { Button } from "react-bootstrap";
-import { Recipe } from "./recipe_component";
+import { Recipe } from "./recipe_component/recipe_component";
 import { NewRecipe } from "./recipe_creator/new_recipe";
 import { RecipeType } from "./types";
 import { useEffect, useState } from "react";
+import './page.css';
 
 // This is the main home page of the app
 export default function Home() {
@@ -28,13 +29,13 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <div className="card-grid">
       {recipes.length > 0 ? (recipes.map((recipe) => (
         <Recipe key = {recipe.id} id = {recipe.id} header = {recipe.header}/>
       ))): (
         <p> NO RECIPES</p>
       )}
       <NewRecipe/>
-    </>
+    </div>
   );
 }

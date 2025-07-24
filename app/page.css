@@ -1,0 +1,7 @@
+.card-grid {
+    margin: 20px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
