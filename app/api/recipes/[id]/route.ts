@@ -2,7 +2,10 @@
 import { neon } from "@neondatabase/serverless"
 import { NextResponse } from 'next/server';
 
-const sql = neon(process.env.DATABASE_URL!);
+//    const dbUrl = process.env.DATABASE_URL;
+// if (!dbUrl) {
+//     throw new Error("DATABASE_URL is not defined. Check your .env.local.");
+// }
 
 // export async function GET2({ params }: { params: { id: string } }) {
 //   // Example: read data from db.json
