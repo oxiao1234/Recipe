@@ -18,7 +18,7 @@ export default function RecipeCreator(){
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault(); // Prevent default form submission
         const formData = new FormData(e.target);
         create(formData);
