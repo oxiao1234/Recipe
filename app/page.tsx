@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
       {recipes.map((recipe) => (
-        <Recipe id = {recipe.id} header = {recipe.header}/>
+        <Recipe key = {recipe.id} id = {recipe.id} header = {recipe.header}/>
       ))}
       <NewRecipe></NewRecipe>
     </>
