@@ -1,19 +1,33 @@
-import { neon } from "@neondatabase/serverless"
+'use client';
+import { useRouter } from 'next/navigation';
 
 export default function RecipeCreator(){
+    const router = useRouter();
+    
     async function create(formData: FormData){
-        'use server';
-        // Connect to Neon database
-        const sql = neon(`${process.env.DATABASE_URL}`)
         const header = formData.get('header');
-        
-        // Insert the recipe into the Postgres database
-        await sql`INSERT INTO recipe_names (header) VALUES (${header})`;
+        try {
+            await fetch('/api/recipe_creator', {
+                method: 'POST',
+                body: JSON.stringify({header})
+            }
+            );
+        }
+        catch (error){
+            console.error("Error creating recipe", error)
+        }
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Prevent default form submission
+        const formData = new FormData(e.target);
+        create(formData);
+        router.push(`/`)
     }
     
     // Global variable id?
     return (
-        <form action = {create}>
+        <form onSubmit = {handleSubmit}>
             <input type = "text" placeholder = "Recipe Name" name = "header"/>
             <button type = "submit">Submit</button>
         </form>
